@@ -2,7 +2,7 @@
 
 Allows you to convert PNG image files to/from N64 CI format. This is temporary until queueRAM adds CI support into his official n64graphics tool. This tool does not process RGBA, IA, or I textures, use n64graphics for those.
 
-CI4 textures will always assume a 16 color palette is used, and CI8 textures a 256 palette is used. The palette will be generated as a seperate file. `.pal` will be prepended to the final extension. If your bin name is `image.ci4`, then the palette name will be `image.pal.ci4`. If it is `image.ci4.bin`, then it will be `image.ci4.pal.bin`.
+CI4 textures will always assume a 16 color palette is used, and CI8 textures a 256 palette is used. The palette will be generated as a seperate file. The palette file will be named after the CI filename, but postpended with `.pal`.
 
 ## Libraries Used (All MIT licensed)
 
