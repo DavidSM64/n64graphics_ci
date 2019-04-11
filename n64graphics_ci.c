@@ -426,8 +426,8 @@ char* getPaletteFilename(char* ci_filename)
         ERROR("Error allocating bytes for palette filename\n");
     }
     memcpy(pal_bin_filename, ci_filename, bin_filename_len);
-    strcpy(pal_bin_filename + bin_filename_len - 4, ".pal");
-    strcpy(pal_bin_filename + bin_filename_len, extension);
+    strcpy(pal_bin_filename + bin_filename_len, ".pal");
+    //strcpy(pal_bin_filename + bin_filename_len, extension);
 
     free(extension);
 
@@ -539,9 +539,11 @@ int main(int argc, char* argv[])
         case IMG_FORMAT_CI:
             // Read Palette file
             pal_bin_filename = getPaletteFilename(config.bin_filename);
-
             fp_pal = fopen(pal_bin_filename, "r");
-
+            if (!fp_pal) {
+                ERROR("Error opening \"%s\"\n", pal_bin_filename);
+                return -1;
+            }
             if (config.depth == 4) {
                 pal_len = 16 * 2; // CI4
             }
